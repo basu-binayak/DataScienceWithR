@@ -34,7 +34,7 @@ R is tailor-made for data manipulation and statistical modeling. It comes packed
 ### 🚀 What Makes R Special?
 
 | Feature | Why It Matters in Data Science |
-|------------------------|------------------------------------------------|
+|--------------------------|----------------------------------------------|
 | 🧮 Built for Statistics | Includes built-in support for statistical tests, models. |
 | 📊 Elegant Visualizations | `ggplot2` and `plotly` help build publication-ready charts. |
 | 🧰 Vast Package Ecosystem | Thousands of CRAN packages for every data task imaginable. |
@@ -82,14 +82,143 @@ R is used by:
 
 > R is a language built *by statisticians, for statisticians*—but it's now embraced across the entire data science pipeline. Whether you’re visualizing data, modeling trends, or writing reproducible reports, **R makes data analysis elegant and powerful**.
 
----
+------------------------------------------------------------------------
 
+## 🔍 Deep Dive: Types of Variables in R
 
+In R, variables are dynamically typed, meaning you don’t need to declare a variable’s type—it’s inferred from the value you assign. But **understanding the types of variables (also called data types or object types)** is critical for proper data manipulation and analysis.
 
+### 🧱 1. **Numeric (Double & Integer)**
 
+**Used when you're working with numbers—like prices, scores, measurements.**
 
+-   **Numeric (double):** Default type for decimal or whole numbers.
+-   **Integer:** Whole numbers explicitly defined with an `L`.
 
+```{r}
+x <- 45.67      # numeric (double)
+y <- 23L        # integer (the L tells R it's an integer)
 
+print(x)
+print(typeof(y))
 
+```
 
+📌 *Use case:* Height of individuals (`170.5` cm), Number of sales (`100L`).
 
+### 🔤 2. **Character (String)**
+
+**Textual data—names, categories, IDs.**
+
+```{r}
+name <- "Binayak"
+city <- "Paris"
+
+print(paste(name, "lives in", city))
+
+```
+
+📌 *Use case:* Customer names, product categories, file paths.
+
+### ✅ 3. **Logical (Boolean)**
+
+**Only two values: `TRUE` or `FALSE`.** Used in comparisons and filtering.
+
+```{r}
+is_passed <- TRUE
+
+age <- 65L
+is_senior <- age > 60  # returns a logical value
+
+print(is_senior)
+
+```
+
+📌 *Use case:* Checking if a value meets a condition (e.g., is salary \> 50K?).
+
+### 📅 4. **Date and Time**
+
+**Special types to handle calendar dates and timestamps.**
+
+```{r}
+today <- Sys.Date()
+now <- Sys.time()
+
+print(today)
+print(now)
+
+```
+
+📌 *Use case:* Transaction dates, login timestamps, time series analysis.
+
+### 🧩 5. **Factor (Categorical Variable)**
+
+**Used for categorical data with fixed possible values.**
+
+```{r}
+gender <- factor(c("Male", "Female", "Male"))
+levels(gender)
+
+```
+
+📌 *Use case:* Gender, Blood Type, Education Level (ordinal or nominal).
+
+### 📦 6. **Complex**
+
+**Rarely used. For complex numbers with real + imaginary parts.**
+
+```{r}
+z <- 3 + 4i
+```
+
+📌 *Use case:* Advanced mathematical/statistical modeling.
+
+### ⚙️ 7. **Raw**
+
+**Stores bytes. Used in low-level programming, file handling.**
+
+```{r}
+
+raw_var <- charToRaw("Hello")
+print(raw_var)
+
+```
+
+📌 *Use case:* Binary data, encryption, file I/O.
+
+### 🧪 Check Variable Types
+
+Use these functions to check or convert types:
+
+```{r}
+x <- 45.67
+class(x)      # Returns "numeric", "character", etc.
+typeof(x)     # More technical/internal type
+is.numeric(x) # Checks if x is numeric
+as.character(x) # Converts to character
+
+```
+
+### 🧠 Tip:
+
+R variables can change types based on operations:
+
+```{r}
+a <- "5"          # character
+b <- as.numeric(a)  # now numeric
+```
+
+### 📌 Summary Table:
+
+| Type      | Example Value    | Function       | Use Case              |
+|-----------|------------------|----------------|-----------------------|
+| Numeric   | `5.5`, `23`      | `is.numeric`   | Calculations, metrics |
+| Integer   | `23L`            | `is.integer`   | Discrete counts       |
+| Character | `"Apple"`        | `is.character` | Names, categories     |
+| Logical   | `TRUE`, `FALSE`  | `is.logical`   | Conditions, filters   |
+| Factor    | `factor("Low")`  | `is.factor`    | Categorical encoding  |
+| Date      | `Sys.Date()`     | `is.Date`      | Timestamps, dates     |
+| Complex   | `2 + 3i`         | `is.complex`   | Math, simulations     |
+| Raw       | `charToRaw("A")` | `is.raw`       | Bytes, files          |
+
+------------------------------------------------------------------------
